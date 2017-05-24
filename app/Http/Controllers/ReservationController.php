@@ -54,7 +54,17 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        $reservation = Reservation::create($request->all());
+        $reservation =  new Reservation;
+        $reservation->name=$request->name;
+        $reservation->person_count=$request->person_count;
+        $reservation->date=$request->date;
+        $reservation->time=$request->time;
+        $reservation->phone=$request->phone;
+        $reservation->user_id=$request->user()->id;
+
+        $reservation->save();
+
+
 
         Mail::to($request->user())->send(new ReservationAccept($reservation));
         return redirect()->route('products.index')->with(['message' => 'Yours reservation accept']);

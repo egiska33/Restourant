@@ -25,6 +25,18 @@
                         </div>
                     </div>
                 @endforeach
+                <hr>
+                <h2>My Reservations</h2>
+                @foreach($reservations as $reservation)
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <ul class="list-group-item">
+                                <li class="list-group-item">{{$reservation->date}} | {{$reservation->time}}</li>
+                                <li class="list-group-item">Person: {{$reservation->person_count}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

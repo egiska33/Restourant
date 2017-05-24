@@ -63,54 +63,41 @@ class AddToCartController extends Controller
        return view('cart.checkout',compact('total'));
    }
 
-   public function storeCheckout(Request $request)
-   {
-       if(! Session::has('cart'))
-       {
-           return redirect()->to('shopingCart');
-       }
-       $oldCart = Session::get('cart');
-       $cart = new Cart($oldCart);
-
-       $order = new Order();
-       $order->cart = serialize($cart);
-//       $order->payment_id = $charge->id;
-
-       Auth::user()->orders()->save($order);
-       Session::forget('cart');
-       return redirect()->to('products')->with('message', 'Successfuly purchased');
-
-   }
 
 
    public function postCheckout(Request $request)
-   {
-       if(! Session::has('cart'))
-       {
-           return redirect()->to('shopingCart');
-       }
-       $oldCart = Session::get('cart');
-       $cart = new Cart($oldCart);
+   {;
 
-       Stripe::setApiKey('sk_test_RevFLPmDiKjfUmIF6m3f1ivo');
-       try {
-           $charge = Charge::create(array(
-               "amount" => $cart->totalPrice*100,
-               "currency" => "eur",
-               "source" => $request->input('stripeToken'), // obtained with Stripe.js
-               "description" => "Test Charge"
-            ));
+            if(! Session::has('cart'))
+            {
+                return redirect()->to('shopingCart');
+            }
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
 
-           $order = new Order();
-           $order->cart = serialize($cart);
-           $order->payment_id = $charge->id;
+            Stripe::setApiKey('sk_test_RevFLPmDiKjfUmIF6m3f1ivo');
 
-           Auth::user()->orders()->save($order);
-            } catch (\Exception $e) {
-           return redirect()->route('checkout')->with('error',  $e->getMessage());
-       }
 
-       Session::forget('cart');
-       return redirect()->to('products')->with('message', 'Successfuly purchased');
+
+            try {
+                $charge = Charge::create(array(
+                    "amount" => $cart->totalPrice*100,
+                    "currency" => "eur",
+                    "source" => $request->get('stripeToken'), // obtained with Stripe.js
+                    "description" => "Test Charge"
+                 ));
+
+                $order = new Order();
+                $order->cart = serialize($cart);
+                $order->payment_id = $charge->id;
+//
+                Auth::user()->orders()->save($order);
+                 } catch (\Exception $e) {
+                return redirect()->route('checkout')->with('error',  $e->getMessage());
+            }
+
+            Session::forget('cart');
+            return redirect()->to('products')->with('message', 'Successfuly purchased');
+
    }
 }
