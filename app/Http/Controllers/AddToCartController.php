@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Mail\OrderPaid;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Session;
 use Stripe\Stripe;
 use Stripe\Charge;
@@ -84,7 +86,8 @@ class AddToCartController extends Controller
                     "amount" => $cart->totalPrice*100,
                     "currency" => "eur",
                     "source" => $request->get('stripeToken'), // obtained with Stripe.js
-                    "description" => "Test Charge"
+                    "description" => "Test Charge",
+                    "receipt_email" => "esivickas@gmail.com"
                  ));
 
                 $order = new Order();
@@ -92,12 +95,17 @@ class AddToCartController extends Controller
                 $order->payment_id = $charge->id;
 //
                 Auth::user()->orders()->save($order);
-                 } catch (\Exception $e) {
+
+                Mail::to($request->user())->send(new OrderPaid());
+
+            } catch (\Exception $e) {
                 return redirect()->route('checkout')->with('error',  $e->getMessage());
             }
 
+
             Session::forget('cart');
-            return redirect()->to('products')->with('message', 'Successfuly purchased');
+
+       return redirect()->to('products')->with('message', 'Successfuly purchased');
 
    }
 }
