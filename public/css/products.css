@@ -21,3 +21,15 @@
     font-weight:bold;
     font-size:1.4em;
 }
+
+#user_profile {
+    color: #1E1E1E;
+}
+.navbar-nav>li>.dropdown-menu {
+    background-color: #000;
+    position: absolute;
+    left: -30px;
+}
+.navbar-default .navbar-nav>.open>a {
+    background-color: #000 !important;
+}
