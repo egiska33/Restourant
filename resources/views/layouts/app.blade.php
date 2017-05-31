@@ -8,12 +8,23 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Pizza') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/products.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" media="screen" type="text/css">
+
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style-portfolio.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/picto-foundry-food.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+
+
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
 
 
     <!-- Scripts -->
@@ -26,8 +37,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
+            <div class="row">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -40,39 +52,40 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Restourant') }}
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;<li><a href="/products">Meniu</a></li>
-                        <li><a href="/reservations">Rezervuoti staliuka</a></li>
+                    <ul class="nav navbar-nav main-nav clear ">
+                        <li><a class="color_animation" href="/about">ABOUT</a></li>
+                        <li><a class="color_animation" href="/products">Meniu</a></li>
+                        <li><a class="color_animation" href="/reservations">Rezervuoti staliuka</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav  main-nav navbar-right">
 
-                            <li><a href="/shopingCart"><i class="fa fa-shoping-cart" aria-hidden="true" en></i>Cart
+                            <li><a  class="color_animation" href="/shopingCart"><i class="fa fa-shoping-cart" aria-hidden="true" en></i>Cart
                                 <span class="badge">{{Session::has('cart') ? Session::get('cart')->totalQty : ' '}}</span>
                                 </a></li>
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a class="color_animation" href="{{ route('login') }}">Login</a></li>
+                            <li><a class="color_animation" href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a class="color_animation" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="/user/{{Auth::user()->id}}">User Profile</a>
+                                        <a class="color_animation" href="/user/{{Auth::user()->id}}">User Profile</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a class="color_animation" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -86,6 +99,7 @@
                             </li>
                         @endif
                     </ul>
+                </div>
                 </div>
             </div>
         </nav>
