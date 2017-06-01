@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <div id="cart">
+
+<div id="cart_up">
+
+</div>
 
     @if(Session::has('cart'))
 
@@ -47,6 +52,6 @@
 
         </div>
 
-
+    </div>
 
 @endsection

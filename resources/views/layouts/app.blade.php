@@ -20,19 +20,25 @@
     <link rel="stylesheet" href="{{ asset('css/style-portfolio.css') }}">
     <link rel="stylesheet" href="{{ asset('css/picto-foundry-food.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
+
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 
 
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
 
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+
 
 </head>
 <body>
@@ -62,6 +68,7 @@
                         <li><a class="color_animation" href="/about">ABOUT</a></li>
                         <li><a class="color_animation" href="/products">Meniu</a></li>
                         <li><a class="color_animation" href="/reservations">Rezervuoti staliuka</a></li>
+                        <li><a class="color_animation" href="/contacts">Kontaktai</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -110,11 +117,17 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.js"
-    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-    crossorigin="anonymous"></script>
+
+
 
 @yield('script')
+    <footer class="sub_footer">
+        <div class="container">
+            <div class="col-md-4"><p class="sub-footer-text text-center">&copy; Restaurant 2017, Create by <a href="#">Egiska</a></p></div>
+            <div class="col-md-4"><p class="sub-footer-text text-center">Back to <a href="#top">TOP</a></p>
+            </div>
+            <div class="col-md-4"><p class="sub-footer-text text-center">Built With Laravel </p></div>
+        </div>
+    </footer>
     </body>
 </html>
