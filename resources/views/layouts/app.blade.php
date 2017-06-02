@@ -15,24 +15,17 @@
     <link href="{{ asset('css/products.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" media="screen" type="text/css">
-
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ asset('css/style-portfolio.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/picto-foundry-food.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
-
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('css/slick.css') }}" media="screen" type="text/css">
 
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!-- Scripts -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+    /*<!-- Scripts -->*/
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -120,7 +113,8 @@
 
 
 
-@yield('script')
+
+    @yield('script')
     <footer class="sub_footer">
         <div class="container">
             <div class="col-md-4"><p class="sub-footer-text text-center">&copy; Restaurant 2017, Create by <a href="#">Egiska</a></p></div>
