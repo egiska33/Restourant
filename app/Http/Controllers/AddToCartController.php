@@ -115,7 +115,7 @@ class AddToCartController extends Controller
 //
                 Auth::user()->orders()->save($order);
 
-                Mail::to($request->user())->send(new OrderPaid());
+                Mail::to($request->user())->send(new OrderPaid($order));
 
             } catch (\Exception $e) {
                 return redirect()->route('checkout')->with('error',  $e->getMessage());

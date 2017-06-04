@@ -6,7 +6,7 @@
 
     @if(Session::has('cart'))
 
-        <div class="container1">
+        <div class="container align1">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3" >
                     <ul class="list-group">

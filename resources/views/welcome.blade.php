@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="cart">
-    <div class="container1">
+    <div class="container align1">
         <div class="slider">
             <div class="photos">
                 <img src="/images/food_icon01.jpg">
