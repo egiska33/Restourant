@@ -418,3 +418,8 @@ button.slick-prev, button.slick-prev:hover {
     opacity: .75;
     color: black;
 }
+
+
+.bot {
+    margin-bottom: 40px;
+}
