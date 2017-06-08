@@ -35,14 +35,15 @@
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
+<div id="app">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
             <div class="row">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -62,21 +63,26 @@
                         <li><a class="color_animation" href="/products">Meniu</a></li>
                         <li><a class="color_animation" href="/reservations">Rezervuoti staliuka</a></li>
                         <li><a class="color_animation" href="/contacts">Kontaktai</a></li>
+                        @if(Auth::user() && Auth::user()->role == 'admin')
+                            <li><a class="color_animation" href="/messages">Zinutes</a></li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav  main-nav navbar-right">
 
-                            <li><a  class="color_animation" href="/shopingCart"><i class="fa fa-shoping-cart" aria-hidden="true" en></i>Cart
+                        <li><a class="color_animation" href="/shopingCart"><i class="fa fa-shoping-cart"
+                                                                              aria-hidden="true" en></i>Cart
                                 <span class="badge">{{Session::has('cart') ? Session::get('cart')->totalQty : ' '}}</span>
-                                </a></li>
+                            </a></li>
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a class="color_animation" href="{{ route('login') }}">Login</a></li>
                             <li><a class="color_animation" href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
-                                <a class="color_animation" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a class="color_animation" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                   role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -86,12 +92,13 @@
                                     </li>
                                     <li>
                                         <a class="color_animation" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
+                                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
@@ -100,29 +107,28 @@
                         @endif
                     </ul>
                 </div>
-                </div>
             </div>
-        </nav>
-
-        @yield('content')
-
-    </div>
-
-    <!-- Scripts -->
-{{--    <script src="{{ asset('js/app.js') }}"></script>--}}
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-
-
-
-    @yield('script')
-    <footer class="sub_footer">
-        <div class="container">
-            <div class="col-md-4"><p class="sub-footer-text text-center">&copy; Restaurant 2017, Create by <a href="#">Egiska</a></p></div>
-            <div class="col-md-4"><p class="sub-footer-text text-center">Back to <a href="#top">TOP</a></p>
-            </div>
-            <div class="col-md-4"><p class="sub-footer-text text-center">Built With Laravel </p></div>
         </div>
-    </footer>
-    </body>
+    </nav>
+
+    @yield('content')
+
+</div>
+
+<!-- Scripts -->
+{{--    <script src="{{ asset('js/app.js') }}"></script>--}}
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+@yield('script')
+<footer class="sub_footer">
+    <div class="container">
+        <div class="col-md-4"><p class="sub-footer-text text-center">&copy; Restaurant 2017, Create by <a href="#">Egiska</a>
+            </p></div>
+        <div class="col-md-4"><p class="sub-footer-text text-center">Back to <a href="#top">TOP</a></p>
+        </div>
+        <div class="col-md-4"><p class="sub-footer-text text-center">Built With Laravel </p></div>
+    </div>
+</footer>
+</body>
 </html>
