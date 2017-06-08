@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageAccept;
 use App\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller {
 
@@ -14,7 +16,6 @@ class MessageController extends Controller {
 
     public function store(Request $request)
     {
-//        dd($request);
         $message = new Message();
 
         $message->name = $request->name;
@@ -23,6 +24,7 @@ class MessageController extends Controller {
         $message->message = $request->message;
         $message->save();
 
+        Mail::to('esivickas@gmail.com')->send(new MessageAccept($message));
         return redirect()->route('contacts')->with(['message' => 'Yours message sent to restourant chef']);
     }
 }
