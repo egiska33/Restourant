@@ -27,4 +27,10 @@ class MessageController extends Controller {
         Mail::to('esivickas@gmail.com')->send(new MessageAccept($message));
         return redirect()->route('contacts')->with(['message' => 'Yours message sent to restourant chef']);
     }
+
+    public function index(){
+        $messages = Message::all();
+
+        return view('messages.index', compact('messages'));
+    }
 }
