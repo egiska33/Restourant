@@ -4,7 +4,7 @@
     <div id="cart">
         <div class="container align1">
             <div class="row">
-                <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-4">
+                <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-4 po">
                     <h2>Checkout</h2>
                     <h4>Your total {{$total}} euro</h4>
                     <div id="charge-error" class="alert alert-danger {{!Session::has('error') ? 'hidden' : ''}}">
